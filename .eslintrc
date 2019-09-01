@@ -1,0 +1,10 @@
+{
+  "parser": "babel-eslint",
+  "parserOptions": {
+  },
+  "plugins": ["prettier", "svelte3"],
+  "extends": ["prettier"],
+  "rules": {
+    "prettier/prettier": "error"
+  }
+}
