@@ -1,5 +1,6 @@
 <script>
   import { createEventDispatcher } from 'svelte'
+  import classnames from 'classnames'
   import Nought from './Nought.svelte'
   import Cross from './Cross.svelte'
 
@@ -22,10 +23,18 @@
     {#each board as square, pos}
       <div
         on:click={() => makeMove(pos)}
-        class="border-4 border-gray-400 flex justify-center items-center"
-        class:hover:border-green-400={canPlay(pos) && !gameOver}
-        class:hover:border-red-400={!canPlay(pos) && !gameOver}
-        class:border-yellow-400={winningLine.includes(pos)}>
+        class={classnames(
+          'border-4',
+          'border-gray-400',
+          'flex',
+          'justify-center',
+          'items-center',
+          {
+            'hover:border-green-400': canPlay(pos) && !gameOver,
+            'hover:border-red-400': !canPlay(pos) && !gameOver,
+            'border-yellow-400': winningLine.includes(pos),
+          }
+        )}>
         <div class="w-1/2" style="height: 50%">
           {#if square == 'X'}
             <Cross />
