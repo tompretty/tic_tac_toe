@@ -1,8 +1,8 @@
 <script>
-  import Nought from './Nought.svelte'
-  import Cross from './Cross.svelte'
+  import Nought from "./Nought.svelte";
+  import Cross from "./Cross.svelte";
 
-  export let scores
+  export let scores;
 </script>
 
 <div class="flex justify-around items-baseline">

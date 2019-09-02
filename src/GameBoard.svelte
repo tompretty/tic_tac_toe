@@ -1,21 +1,21 @@
 <script>
-  import { createEventDispatcher } from 'svelte'
-  import classnames from 'classnames'
-  import Nought from './Nought.svelte'
-  import Cross from './Cross.svelte'
+  import { createEventDispatcher } from "svelte";
+  import classnames from "classnames";
+  import Nought from "./Nought.svelte";
+  import Cross from "./Cross.svelte";
 
-  const dispatch = createEventDispatcher()
+  const dispatch = createEventDispatcher();
 
   function makeMove(pos) {
-    dispatch('makeMove', {
-      pos: pos,
-    })
+    dispatch("makeMove", {
+      pos: pos
+    });
   }
 
-  export let board
-  export let canPlay
-  export let gameOver
-  export let winningLine
+  export let board;
+  export let canPlay;
+  export let gameOver;
+  export let winningLine;
 </script>
 
 <div class="relative" style="padding-bottom: 100%">
@@ -32,7 +32,7 @@
           {
             'hover:border-green-400': canPlay(pos) && !gameOver,
             'hover:border-red-400': !canPlay(pos) && !gameOver,
-            'border-yellow-400': winningLine.includes(pos),
+            'border-yellow-400': winningLine.includes(pos)
           }
         )}>
         <div class="w-1/2" style="height: 50%">

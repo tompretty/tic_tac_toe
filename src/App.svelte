@@ -1,39 +1,39 @@
 <script>
-  import ScoreBoard from './ScoreBoard.svelte'
-  import GameBoard from './GameBoard.svelte'
-  import ResetButton from './ResetButton.svelte'
+  import ScoreBoard from "./ScoreBoard.svelte";
+  import GameBoard from "./GameBoard.svelte";
+  import ResetButton from "./ResetButton.svelte";
 
-  let board = ['', '', '', '', '', '', '', '', '']
-  let gameOver = false
-  let turn = 'X'
-  let winningLine = []
+  let board = ["", "", "", "", "", "", "", "", ""];
+  let gameOver = false;
+  let turn = "X";
+  let winningLine = [];
   let scores = {
     noughts: 0,
-    crosses: 0,
-  }
+    crosses: 0
+  };
 
   function newGame() {
-    board = ['', '', '', '', '', '', '', '', '']
-    gameOver = false
-    turn = 'X'
-    winningLine = []
+    board = ["", "", "", "", "", "", "", "", ""];
+    gameOver = false;
+    turn = "X";
+    winningLine = [];
   }
 
   function makeMove(event) {
-    let pos = event.detail.pos
+    let pos = event.detail.pos;
 
     if (canPlay(pos)) {
-      play(pos)
-      checkForWinner()
-      checkForDraw()
-      updateTurn()
+      play(pos);
+      checkForWinner();
+      checkForDraw();
+      updateTurn();
     }
   }
 
-  $: canPlay = pos => board[pos] == '' && !gameOver
+  $: canPlay = pos => board[pos] == "" && !gameOver;
 
   function play(pos) {
-    board[pos] = turn
+    board[pos] = turn;
   }
 
   function checkForWinner() {
@@ -45,33 +45,33 @@
       [1, 4, 7],
       [2, 5, 8],
       [0, 4, 8],
-      [6, 4, 2],
-    ]
+      [6, 4, 2]
+    ];
 
     for (var line of lines) {
-      let isWinningLine = line.every(i => board[i] == turn)
+      let isWinningLine = line.every(i => board[i] == turn);
       if (isWinningLine) {
-        gameOver = true
-        winningLine = line
-        if (turn == 'X') {
-          scores.crosses++
+        gameOver = true;
+        winningLine = line;
+        if (turn == "X") {
+          scores.crosses++;
         } else {
-          scores.noughts++
+          scores.noughts++;
         }
-        break
+        break;
       }
     }
   }
 
   function checkForDraw() {
-    if (board.every(s => s != '')) {
-      console.log('draw')
-      gameOver = true
+    if (board.every(s => s != "")) {
+      console.log("draw");
+      gameOver = true;
     }
   }
 
   function updateTurn() {
-    turn = turn == 'X' ? 'O' : 'X'
+    turn = turn == "X" ? "O" : "X";
   }
 </script>
 
