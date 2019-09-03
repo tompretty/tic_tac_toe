@@ -6,12 +6,16 @@
   export let X;
 </script>
 
-<div class="flex justify-around items-baseline">
-  <div class="w-1/5">
-    <Nought />
+<div class="flex items-baseline">
+  <div class="w-1/3 flex justify-center">
+    <div class="w-1/2">
+      <Nought />
+    </div>
   </div>
-  <div class="text-4xl text-gray-500">{O} : {X}</div>
-  <div class="w-1/5">
-    <Cross />
+  <div class="w-1/3 flex justify-center text-4xl text-gray-500">{O} : {X}</div>
+  <div class="w-1/3 flex justify-center">
+    <div class="w-1/2">
+      <Cross />
+    </div>
   </div>
 </div>
