@@ -13,9 +13,9 @@
   }
 
   export let board;
-  export let canPlay;
   export let gameOver;
   export let winningLine;
+  export let playables;
 </script>
 
 <div class="relative" style="padding-bottom: 100%">
@@ -30,8 +30,8 @@
           'justify-center',
           'items-center',
           {
-            'hover:border-green-400': canPlay(pos) && !gameOver,
-            'hover:border-red-400': !canPlay(pos) && !gameOver,
+            'hover:border-green-400': playables[pos] && !gameOver,
+            'hover:border-red-400': !playables[pos] && !gameOver,
             'border-yellow-400': winningLine.includes(pos)
           }
         )}>
